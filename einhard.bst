@@ -66,14 +66,6 @@ FUNCTION {output.semicolon} {
   "{; }" write$
 }
 
-FUNCTION {begin.entry} {
-  newline$
-  "\bibitem{" write$
-  cite$ write$
-  "}" write$
-  newline$
-}
-
 FUNCTION {format.names}
 { 's :=
   "" 'u  :=
@@ -214,6 +206,17 @@ FUNCTION {format.website.title} {
   if$
 }
 
+FUNCTION {begin.entry} {
+  newline$
+  "\bibitem[" write$
+  format.authors write$
+  "(" format.year * ")" * write$
+  "]{" write$
+  cite$ write$
+  "}" write$
+  newline$
+}
+
 FUNCTION {book} {
   begin.entry
 
@@ -281,7 +284,7 @@ FUNCTION {website} {
 }
 
 FUNCTION {begin.bib} {
-  "\begin{thebibliography}{9999}" write$ newline$
+  "\begin{thebibliography}{99}" write$ newline$
 }
 
 FUNCTION {end.bib} {
